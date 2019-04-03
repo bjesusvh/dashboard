@@ -4,7 +4,7 @@
 ##       THIS IS A PERSONAL PROYECT DEVELOPED BY: DR. BARTOLO VILLAR
 ##       SMIF
 ##       Version 1.0.
-##       December-2018
+##       April-2019
 ##-------------------------------------------------------------------------------------------------##
 ##-------------------------------------------------------------------------------------------------##
 library(shiny)
@@ -20,14 +20,9 @@ library(magrittr)
 library(mice)
 theme_set(theme_bw()) #bw
 
-## Directorio de trabajo automatico, tomado de 
-# https://eranraviv.com/r-tips-and-tricks-working-directory/
-set_wd <- function() {
-  library(rstudioapi) # make sure you have it installed
-  current_path <- getActiveDocumentContext()$path 
-  setwd(dirname(current_path ))
-  print( getwd() )
-}
+## Directorio de trabajo automatico.
+current_dir <- dirname(rstudioapi::getSourceEditorContext()$path)
+setwd(current_dir)
 
 load("data_all.RData")
 source("multiplot_ranking_others.R")
