@@ -419,37 +419,37 @@ server <- function(input, output) {
   ## CARTERA DE CREDITO TOTAL
   output$CCT <- renderPlot({
     req(input$selected_IF)
-    ggplot(data=datos_if(), aes(x=DATE)) +
-      geom_area(aes(y=CCT/1e6), fill = "#2c7fb8", alpha = 0.6) +
-      geom_area(aes(y=CARTERA_FIRA/1e6), fill = "blue", alpha = 0.4)+
-      geom_line(aes(y=CCT/1e6), col = "#2c7fb8", size=1.0)+
-      geom_line(aes(y=CARTERA_FIRA/1e6), col = "blue", size=1.0)+
+    ggplot(data = datos_if(), aes(x = DATE)) +
+      geom_area(aes(y = CCT/1e6), fill = "#2c7fb8", alpha = 0.6) +
+      geom_area(aes(y = CARTERA_FIRA/1e6), fill = "blue", alpha = 0.4)+
+      geom_line(aes(y = CCT/1e6), col = "#2c7fb8", size = 1.0)+
+      geom_line(aes(y = CARTERA_FIRA/1e6), col = "blue", size = 1.0)+
       theme(axis.text.x = element_text(angle = 90, vjust=0.5), panel.grid.minor = element_blank()) +
       scale_x_date(labels = date_format("%m/%Y"), breaks = "3 month") +
       labs(title = "CARTERA DE CREDITO TOTAL y CARTERA CON RECURSOS FIRA" ,
            subtitle = "Cifras en Millones de Pesos",
            caption = "Fuente: SIIOF / SMIF",
-           y="Millones de pesos",
-           x="") + theme(aspect.ratio = 0.5) 
+           y = "Millones de pesos",
+           x = "" ) + theme(aspect.ratio = 0.5) 
   })
   
   ## Resultado neto
   output$RES_NETO <- renderPlot({
     req(input$selected_IF)
-    ggplot(data=datos_if(), aes(x=DATE)) +
-      geom_line(aes(y=RESULTADO_NETO_BG/1e6), col = "darkgray", size=1.0) +
-      geom_point(aes(y=RESULTADO_NETO_BG/1e6, colour = cut(RESULTADO_NETO_BG/1e6, c(-Inf, 0, Inf))), size=2) + 
+    ggplot(data = datos_if(), aes(x = DATE)) +
+      geom_line(aes(y  = RESULTADO_NETO_BG/1e6), colour = "darkgray", size=1.0) +
+      geom_point(aes(y = RESULTADO_NETO_BG/1e6, colour  = cut(RESULTADO_NETO_BG/1e6, c(-Inf, 0, Inf))), size = 2) + 
       scale_color_manual(name = "Resultado neto",
                          values = c("(-Inf,0]" = "red",
                                     "(0, Inf]" = "blue")) +
-      theme(axis.text.x = element_text(angle = 90, vjust=0.5), panel.grid.minor = element_blank()) +
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5), panel.grid.minor = element_blank()) +
       scale_x_date(labels = date_format("%m/%Y"), breaks = "3 month") +
-      theme(legend.position='none') + 
+      theme(legend.position = 'none') + 
       labs(title = "RESULTADO NETO" ,
            subtitle = "Cifras en Millones de Pesos",
            caption = "Fuente: SIIOF / SMIF",
-           y="Millones de Pesos",
-           x="") + theme(aspect.ratio = 0.5) 
+           y = "Millones de Pesos",
+           x = "") + theme(aspect.ratio = 0.5) 
   })
   
   ## Resultado neto
@@ -470,11 +470,11 @@ server <- function(input, output) {
   ## ICV
   output$ICV <- renderPlot({
     req(input$selected_IF)
-    ggplot(data=datos_if(), aes(x=DATE)) +
-      geom_line(aes(y=ICV), col = "#2b8cbe", size=1.0) +
+    ggplot(data = datos_if(), aes(x = DATE)) +
+      geom_line(aes(y=ICV), col = "#2b8cbe", size = 1.0) +
       # geom_hline(yintercept = 6.5, col="green", size = 1, linetype = 2) + 
       geom_hline(yintercept = 10, col="red", size = 1, linetype = 2) + 
-      geom_line(aes(y=ICVN), col = "#a6bddb", size=1.0) + 
+      geom_line(aes(y = ICVN), col = "#a6bddb", size = 1.0) + 
       # geom_hline(yintercept = 3.0, col="green", size = 1, linetype = 2) + 
       geom_hline(yintercept = 3.5, col="red", size = 1, linetype = 2) + 
       theme(axis.text.x = element_text(angle = 90, vjust=0.5), panel.grid.minor = element_blank()) +
@@ -484,8 +484,8 @@ server <- function(input, output) {
       labs(title = "ICV e ICVN" ,
            subtitle = "Cifras en Porcentaje",
            caption = "Fuente: SIIOF / SMIF",
-           y="Porcentaje",
-           x="") + theme(aspect.ratio = 0.5) 
+           y = "Porcentaje",
+           x = "") + theme(aspect.ratio = 0.5) 
   })
   
 
